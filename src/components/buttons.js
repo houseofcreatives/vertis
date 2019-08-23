@@ -1,6 +1,7 @@
 import css from "styled-components"
 
 export const PrimaryButton = css.a`
+  cursor: pointer;
   border: none;
   background: linear-gradient(90deg, #1495d3 0%, #5dcafe 100%);
   color: #fff !important;
@@ -24,6 +25,7 @@ export const PrimaryButton = css.a`
 `
 
 export const SecondaryButton = css.a`
+  cursor: pointer;
   border: none;
   background: linear-gradient(90deg, #0cad98 0%, #0bd8a5 100%);
   color: white;

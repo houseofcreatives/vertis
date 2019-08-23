@@ -10897,6 +10897,13 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
+tiny-slider-react@^0.4.0:
+  version "0.4.0"
+  resolved "http://npm.leonwright.me:4873/tiny-slider-react/-/tiny-slider-react-0.4.0.tgz#48f6bb0048e655fff18a04ec0fdc5a19abfb982b"
+  integrity sha512-ciq/XiltKtnzE8czox/Y54ff7pkeiCQDSWgw6Yw7ZYrzIqPxke0z9hk1lRmtfQKcIpgP4kdCFjwctKdRvhrXSQ==
+  dependencies:
+    ventura-slider "2.9.1"
+
 tinycolor2@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
@@ -11338,6 +11345,11 @@ vendors@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.3.tgz#a6467781abd366217c050f8202e7e50cc9eef8c0"
   integrity sha512-fOi47nsJP5Wqefa43kyWSg80qF+Q3XA6MUkgi7Hp1HQaKDQW4cQrK2D0P7mmbFtsV1N89am55Yru/nyEwRubcw==
+
+ventura-slider@2.9.1:
+  version "2.9.1"
+  resolved "http://npm.leonwright.me:4873/ventura-slider/-/ventura-slider-2.9.1.tgz#e1995fe11b37826ae0797937fb31c469697130c7"
+  integrity sha512-qOzJzXryxQObOqgr4LshSFqrVDDm/Ul9TtaW+HiN6I21qKPFS5gQpj/mHLdv32rnZiNgt7zBRhagiQNbsvPV4Q==
 
 verror@1.10.0:
   version "1.10.0"
