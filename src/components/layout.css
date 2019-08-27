@@ -638,3 +638,24 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.tns-slider {
+  height: 155px;
+}
+
+.tns-lazy-img {
+  opacity: 1 !important;
+  max-width: 100%;
+  margin: 0;
+}
+
+.tns-item {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100% !important;
+}
+
+.tns-item a {
+  height: 100%;
+}
