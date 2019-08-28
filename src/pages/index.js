@@ -5,6 +5,12 @@ import css from "styled-components"
 import { SecondaryButton } from "./../components/buttons"
 import { device } from "../devices"
 import { PartnerSlider } from "./../components/partnerSlider"
+import { OurServices } from "./../components/OurServices"
+import { About } from "../components/About"
+import { CompanyInformation } from "./../components/CompanyInformation"
+import { OurTeam } from "./../components/OurTeam"
+import { Testimonials } from "./../components/Testimonials"
+import { ContactUs } from "./../components/ContactUs"
 
 // Images
 import LaptopImg from "./../images/laptop-image.png"
@@ -102,6 +108,9 @@ const IndexPage = () => (
       </Intro>
     </Jumbotron>
     <PartnerSlider />
+    <OurServices />
+    <CompanyInformation />
+    <About />
   </Layout>
 )
 

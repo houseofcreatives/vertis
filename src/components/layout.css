@@ -1,21 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap");
-
-/* Variables */
-:root {
-  --primary-color: #1495d3;
-  --accent-color: #0cad98;
-
-  --zindex-dropdown: 1000;
-  --zindex-sticky: 1020;
-  --zindex-fixed: 1030;
-  --zindex-modal-backdrop: 1040;
-  --zindex-modal: 1050;
-  --zindex-popover: 1060;
-  --zindex-tooltip: 1070;
-
-  --default-stripe-width: 450px;
-}
-
 html {
   font-family: "Open Sans", sans-serif;
   -ms-text-size-adjust: 100%;
@@ -658,4 +640,11 @@ pre tt:after {
 
 .tns-item a {
   height: 100%;
+}
+
+.active-sec-outline {
+  background: linear-gradient(90deg, #0cad98 0%, #0bd8a5 100%);
+  color: white;
+  border: none;
+  padding: 18px 44px;
 }

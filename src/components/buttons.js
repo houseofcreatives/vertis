@@ -1,6 +1,6 @@
-import css from "styled-components"
+import styled from "styled-components"
 
-export const PrimaryButton = css.a`
+export const PrimaryButton = styled.a`
   cursor: pointer;
   border: none;
   background: linear-gradient(90deg, #1495d3 0%, #5dcafe 100%);
@@ -14,17 +14,16 @@ export const PrimaryButton = css.a`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+    box-shadow: 0 10px 20px var(--black-color);
   }
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba($color-black, 0.2);
-    border: none;
+    box-shadow: 0 5px 10px var(--black-color);
   }
 `
 
-export const SecondaryButton = css.a`
+export const SecondaryButton = styled.a`
   cursor: pointer;
   border: none;
   background: linear-gradient(90deg, #0cad98 0%, #0bd8a5 100%);
@@ -37,12 +36,38 @@ export const SecondaryButton = css.a`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+    box-shadow: 0 10px 20px var(--black-color);
   }
 
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba($color-black, 0.2);
-    border: none;
+    box-shadow: 0 5px 10px var(--black-color);
   }
 `
+
+export const SecondaryButtonOutline = styled.a`
+  border: 3px solid #0bd8a5;
+  background: transparent;
+  color: #0bd8a5;
+  padding: 15px 44px;
+  transition: all 0.2s;
+  border-radius: 15px;
+  display: inline-block;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--black-color);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px var(--black-color);
+  }
+`
+
+export const SecBtnOutlineActive = {
+  background: "linear-gradient(90deg, #0cad98 0%, #0bd8a5 100%)",
+  color: "white",
+  border: "none",
+  padding: "18px 44px",
+}

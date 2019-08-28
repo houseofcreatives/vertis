@@ -13,6 +13,7 @@ import { device } from "../devices"
 
 const Nav = css.nav`
   position: sticky;
+  top: 0;
   z-index: var(--zindex-sticky);
   width: 100%;
   background-color: #f8f9fa;
