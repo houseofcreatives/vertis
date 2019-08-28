@@ -4,6 +4,7 @@ import styled from "styled-components"
 const Container = styled.section`
   height: calc(160px * 4);
   display: flex;
+  margin-bottom: 120px;
 `
 
 const Stripes = styled.div`
