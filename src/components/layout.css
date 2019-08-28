@@ -631,7 +631,7 @@ pre tt:after {
   margin: 0;
 }
 
-.tns-item {
+.tns-item-partner {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
