@@ -648,3 +648,7 @@ pre tt:after {
   border: none;
   padding: 18px 44px;
 }
+
+.social-icon:not(:last-child) {
+  margin-right: 10px;
+}
