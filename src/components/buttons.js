@@ -46,6 +46,7 @@ export const SecondaryButton = styled.a`
 `
 
 export const SecondaryButtonOutline = styled.a`
+  cursor: pointer;
   border: 3px solid #0bd8a5;
   background: transparent;
   color: #0bd8a5;

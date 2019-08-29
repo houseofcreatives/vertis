@@ -647,6 +647,8 @@ pre tt:after {
   color: white;
   border: none;
   padding: 18px 44px;
+
+  transition: all 1s ease;
 }
 
 .social-icon:not(:last-child) {
