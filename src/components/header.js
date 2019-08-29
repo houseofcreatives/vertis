@@ -83,16 +83,16 @@ const Header = ({ siteTitle }) => (
         <Link to="/#services">
           <NavigationItem>Our Services</NavigationItem>
         </Link>
-        <Link to="about">
+        <Link to="/#about">
           <NavigationItem>About Us</NavigationItem>
         </Link>
-        <Link to="/blog">
+        <a href="http://ec2-3-83-164-68.compute-1.amazonaws.com/">
           <NavigationItem>Blog</NavigationItem>
-        </Link>
+        </a>
         <Link to="/jobs">
           <NavigationItem>Jobs</NavigationItem>
         </Link>
-        <Link to="contact">
+        <Link to="/#contact">
           <NavigationItem>Contact Us</NavigationItem>
         </Link>
         <Link to="/search">

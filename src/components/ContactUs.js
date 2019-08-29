@@ -95,7 +95,7 @@ const MapContainer = styled.div`
 
 export const ContactUs = () => {
   return (
-    <ContactFormContainer>
+    <ContactFormContainer id="contact">
       <FormContainer>
         <FormHeading>Contact Us</FormHeading>
         <FormSubheading>We're here to make it easier</FormSubheading>

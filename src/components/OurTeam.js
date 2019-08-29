@@ -63,7 +63,7 @@ const ExecutiveBio = styled.div`
 
 export const OurTeam = () => {
   return (
-    <OurTeamSection>
+    <OurTeamSection id="about">
       <SectionContainer>
         <SectionHeading>Our Team</SectionHeading>
         <TeamPhoto
