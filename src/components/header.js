@@ -80,10 +80,10 @@ const Header = ({ siteTitle }) => (
     </NavBranding>
     <Navigation>
       <NavigationLinks>
-        <Link to="/services">
+        <Link to="/#services">
           <NavigationItem>Our Services</NavigationItem>
         </Link>
-        <Link to="/about">
+        <Link to="about">
           <NavigationItem>About Us</NavigationItem>
         </Link>
         <Link to="/blog">
@@ -92,7 +92,7 @@ const Header = ({ siteTitle }) => (
         <Link to="/jobs">
           <NavigationItem>Jobs</NavigationItem>
         </Link>
-        <Link to="/contact">
+        <Link to="contact">
           <NavigationItem>Contact Us</NavigationItem>
         </Link>
         <Link to="/search">

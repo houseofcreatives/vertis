@@ -3,14 +3,20 @@ import React from "react"
 import styled from "styled-components"
 import TinySlider from "tiny-slider-react"
 
+import { device } from "./../devices"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 const settings = {
   lazyload: false,
   nav: false,
-  mouseDrag: false,
+  mouseDrag: true,
   autoHeight: true,
+  autoplay: true,
+  autoplayButton: false,
+  autoplayButtonOutput: false,
+  controls: false,
 }
 
 const TestimonialsSection = styled.section`
@@ -68,10 +74,14 @@ const SectionSubheader = styled.p`
   color: #fff;
   text-align: center;
   opacity: 0.7;
-  width: 40%;
+  width: 70%;
   font-size: 18px;
   margin: 0 auto;
   margin-bottom: 20px;
+
+  @media ${device.md} {
+    width: 40%;
+  }
 `
 
 const SliderItem = styled.div`
@@ -105,16 +115,34 @@ const ClientDetails = styled.span`
 
 const clients = [
   {
-    name: "Leon W.",
-    title: "CEO, Techbred",
+    name: "Kiman Williams",
+    title: "Proven Investments",
     message:
-      "Vertis solved our network security needs with implementation of a Unified Threat Management device that improve our security exponentially. Vertis attention to detail is quite refreshing.",
+      "You have to be willing to think outside the box when it comes to mitigating risk, contingency planning, and timelines and have to be fully invested in the project. Vertis checked every one of these boxes and then some.",
   },
   {
-    name: "Saralee P.",
-    title: "CEO, DevWright",
+    name: "Theresa Hancock",
+    title: "Worthy Park Estate",
     message:
-      "Test lol. This is a test thing for other thing dwith the things on eht ethings. Fix this up or else 56384.",
+      "We know Technology is important to be competitive in the manufacturing space, we chose Vertis to transform our Network Infrastructure and implement processes to accomplish our business goals.",
+  },
+  {
+    name: "Maurice Bolt",
+    title: "Iron Rock Insurance Company Ltd. ",
+    message:
+      "Vertis was able to resolve our network concerns in one week where other service providers were saying they needed 2 months. We chose Vertis Technology Solutions Ltd, for our Managed Service partner a decision that has yielded great rewards.",
+  },
+  {
+    name: "Stephen Mullings ",
+    title: "Purity Bakery",
+    message:
+      "Vertis solved our network security needs with the implementation of a Unified Threat Management device that improved our security exponentially. Vertis attention to detail is quite refreshing.",
+  },
+  {
+    name: "Kerrydale Plummer",
+    title: "Harris Groups Of Companies Ltd (Bh Paints)",
+    message:
+      "We needed an ITIL service help desk to be implemented to meet the needs of our staff spread across 5 Caribbean countries. Vertis Technology Solutions Ltd partnered with us to choose, implement and support the service desk delivery tool. Our end users have been giving the IT team high marks for customer service. THANK YOU VERTIS!",
   },
 ]
 
@@ -134,9 +162,7 @@ export const Testimonials = () => {
           {clients.map((el, index) => (
             <div key={index} style={{ position: "relative" }}>
               <SliderItem>
-                <SectionSubheader class="mx-auto text-center text-white">
-                  "{el.message}"
-                </SectionSubheader>
+                <SectionSubheader>"{el.message}"</SectionSubheader>
                 <ClientPhoto
                   src="https://via.placeholder.com/200"
                   alt="Client"

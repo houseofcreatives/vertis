@@ -1,6 +1,42 @@
 import React, { Component } from "react"
 
 import TinySlider from "tiny-slider-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons"
+
+import styled from "styled-components"
+
+const SliderContainer = styled.div`
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  grid-template-rows: auto;
+`
+
+const SliderItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const SliderControl = styled(FontAwesomeIcon)`
+  color: #0cad98af;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+`
+
+const ControlContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const settings = {
   lazyload: false,
@@ -9,6 +45,7 @@ const settings = {
   items: 1,
   autoplay: true,
   autoplayButton: false,
+  autoplayButtonOutput: false,
   controls: false,
   responsive: {
     768: {
@@ -21,6 +58,13 @@ const settings = {
 }
 
 export class PartnerSlider extends Component {
+  constructor(props) {
+    super(props)
+    this.ts = React.createRef()
+  }
+
+  onGoTo = dir => this.ts.slider.goTo(dir)
+
   render() {
     const partners = [
       {
@@ -95,20 +139,41 @@ export class PartnerSlider extends Component {
       },
     ]
     return (
-      <div>
-        <TinySlider settings={settings} ref={ts => (this.ts = ts)}>
-          {partners.map((el, index) => (
-            <div key={index} style={{ position: "relative" }}>
-              <a href={el.website} target="_blank" rel="noopener noreferrer">
-                <img className={`tns-lazy-img`} src={el.imgURL} alt={el.alt} />
-              </a>
-            </div>
-          ))}
-        </TinySlider>
-        <button type="button" onClick={() => this.ts.slider.onGoTo("next")}>
-          Next
-        </button>
-      </div>
+      <SliderContainer>
+        <ControlContainer>
+          <SliderControl
+            onClick={() => this.onGoTo("prev")}
+            icon={faChevronLeft}
+          ></SliderControl>
+        </ControlContainer>
+        <div>
+          <TinySlider settings={settings} ref={ts => (this.ts = ts)}>
+            {partners.map((el, index) => (
+              <div key={index} style={{ position: "relative" }}>
+                <SliderItem>
+                  <a
+                    href={el.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      className={`tns-lazy-img`}
+                      src={el.imgURL}
+                      alt={el.alt}
+                    />
+                  </a>
+                </SliderItem>
+              </div>
+            ))}
+          </TinySlider>
+        </div>
+        <ControlContainer>
+          <SliderControl
+            onClick={() => this.onGoTo("next")}
+            icon={faChevronRight}
+          ></SliderControl>
+        </ControlContainer>
+      </SliderContainer>
     )
   }
 }

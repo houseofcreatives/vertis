@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { device } from "./../devices"
 import { SecondaryButtonOutline, SecondaryButton } from "./buttons"
+import TinySlider from "tiny-slider-react"
 
 const Container = styled.div`
   margin-top: 100px;
@@ -69,43 +70,63 @@ const ServiceDescription = styled.p`
   }
 `
 
+const settings = {
+  lazyload: false,
+  nav: false,
+  mouseDrag: false,
+  items: 1,
+  autoHeight: true,
+  autoplay: false,
+  autoplayButton: false,
+  autoplayButtonOutput: false,
+  controls: false,
+}
+
 export class OurServices extends Component {
   constructor(props) {
     super(props)
     this.state = {
       activeService: 1,
     }
+    this.ts = React.createRef()
   }
+
+  onGoTo = dir => this.ts.slider.goTo(dir)
 
   render() {
     const services = [
       {
         id: 1,
         name: "Application Development",
+        illustration: require("./../images/appdev.svg"),
         description:
           "Classical or modern approaches like Agile, we guarantee a timely delivery of the project within your budget and to your specifications.",
       },
       {
         id: 2,
         name: "Cyber Security",
+        illustration: require("./../images/security.svg"),
         description:
           "The best response to threats is a comprehensive information security strategy, both inside and outside your organization.",
       },
       {
         id: 3,
         name: "IT Staffing",
+        illustration: require("./../images/staffing.svg"),
         description:
           "Classical or modern approaches like Agile, we guarantee a timely delivery of the project within your budget and to your specifications.",
       },
       {
         id: 4,
         name: "Managed Services",
+        illustration: require("./../images/managedservices.svg"),
         description:
           "Vertis Managed Services address all of your day-to-day IT management needs so your internal IT staff can focus on strategic initiatives.",
       },
       {
         id: 5,
         name: "Cloud Services",
+        illustration: require("./../images/cloudservices.svg"),
         description:
           "Classical or modern approaches like Agile, we guarantee a timely delivery of the project within your budget and to your specifications.",
       },
@@ -113,12 +134,15 @@ export class OurServices extends Component {
 
     return (
       <Container>
-        <h3>Our Services</h3>
+        <h3 id="services">Our Services</h3>
         <ServiceButtons>
           {services.map((value, index) => {
             return (
               <SecondaryButtonOutline
+                as={"button"}
+                type="button"
                 key={value.id}
+                onClick={() => this.onGoTo(index)}
                 className={
                   this.state.activeService === value.id
                     ? "active-sec-outline"
@@ -133,26 +157,33 @@ export class OurServices extends Component {
             )
           })}
         </ServiceButtons>
-        <ServiceContainer>
-          <IllustrationContainer>
-            <Illustration src="https://dummyimage.com/400x400/d1cad1/fff.png&text=Illustration" />
-          </IllustrationContainer>
-          <ServiceInfoContainer>
-            <ServiceTitle>
-              {services[this.state.activeService - 1].name}
-            </ServiceTitle>
-            <ServiceDescription>
-              {services[this.state.activeService - 1].description}
-            </ServiceDescription>
-            <SecondaryButton
-              style={{
-                padding: "1rem 4rem",
-              }}
-            >
-              Learn More
-            </SecondaryButton>
-          </ServiceInfoContainer>
-        </ServiceContainer>
+        <TinySlider
+          settings={settings}
+          ref={ts => (this.ts = ts)}
+          onIndexChanged={e => this.setState({ activeService: e.index })}
+        >
+          {services.map((el, index) => (
+            <div key={index}>
+              <ServiceContainer>
+                <IllustrationContainer>
+                  <Illustration src={el.illustration} />
+                </IllustrationContainer>
+                <ServiceInfoContainer>
+                  <ServiceTitle>{el.name}</ServiceTitle>
+                  <ServiceDescription>{el.description}</ServiceDescription>
+                  <SecondaryButton
+                    style={{
+                      padding: "1rem 4rem",
+                      height: "auto",
+                    }}
+                  >
+                    Learn More
+                  </SecondaryButton>
+                </ServiceInfoContainer>
+              </ServiceContainer>
+            </div>
+          ))}
+        </TinySlider>
       </Container>
     )
   }

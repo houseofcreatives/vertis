@@ -1,18 +1,28 @@
 import React, { Component } from "react"
+
+import { device } from "./../devices"
 import styled from "styled-components"
 
 const Container = styled.section`
-  height: calc(160px * 4);
+  height: calc(160px * 6);
   display: flex;
   margin-bottom: 120px;
+
+  @media ${device.md} {
+    height: calc(160px * 4);
+  }
 `
 
 const Stripes = styled.div`
   position: absolute;
   width: 100%;
-  height: calc(160px * 4);
+  height: calc(160px * 6);
   background-image: linear-gradient(to bottom left, #83e9af, #1e97d3);
   transform: skewY(-8deg);
+
+  @media ${device.md} {
+    height: calc(160px * 4);
+  }
 
   & :first-child {
     right: 0;
@@ -52,7 +62,9 @@ const InnerContainer = styled.div`
   align-items: center;
 `
 
-const SectionHeading = styled.h3``
+const SectionHeading = styled.h3`
+  text-align: center;
+`
 
 const P = styled.p`
   text-align: center;

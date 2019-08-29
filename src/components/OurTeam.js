@@ -67,7 +67,7 @@ export const OurTeam = () => {
       <SectionContainer>
         <SectionHeading>Our Team</SectionHeading>
         <TeamPhoto
-          src="https://via.placeholder.com/1500x700"
+          src={require("./../images/teamwork.svg")}
           alt="Jumbo Team Image"
         />
         <IntroText>
@@ -84,21 +84,18 @@ export const OurTeam = () => {
           The Executive Team
         </ExecTeamHeading>
 
-        <Executive class="row executive mt-5">
+        <Executive>
           <div>
             <div>
-              <span class="stripe"></span>
+              <span></span>
               <ExecutivePhoto
-                class="w-100 executive-photo rounded-circle"
                 src={require("./../images/executive-photos/rsterling.png")}
                 alt="executive-photo"
               />
             </div>
 
-            <ExecutiveName class="executive-name">
-              Ryan M. Sterling
-            </ExecutiveName>
-            <ExecutiveTitle class="executive-title">
+            <ExecutiveName>Ryan M. Sterling</ExecutiveName>
+            <ExecutiveTitle>
               Co-founder, CEO &amp; Head of Business Development
             </ExecutiveTitle>
           </div>
@@ -127,9 +124,8 @@ export const OurTeam = () => {
         <Executive style={{ marginTop: "3rem" }}>
           <div>
             <div>
-              <span class="stripe"></span>
+              <span></span>
               <ExecutivePhoto
-                class="w-100 executive-photo rounded-circle"
                 src={require("./../images/executive-photos/csterling.png")}
                 alt="executive-photo"
               />
@@ -164,9 +160,8 @@ export const OurTeam = () => {
         <Executive style={{ marginTop: "3rem" }}>
           <div>
             <div>
-              <span class="stripe"></span>
+              <span></span>
               <ExecutivePhoto
-                class="w-100 executive-photo rounded-circle"
                 src={require("./../images/executive-photos/mkerr.png")}
                 alt="executive-photo"
               />

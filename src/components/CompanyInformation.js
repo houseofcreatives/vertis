@@ -1,10 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 
+import { device } from "./../devices"
+
 const Container = styled.div`
-  height: 700px;
   display: flex;
   width: 100%;
+  padding 5rem 0;
+
+  @media ${device.md} {
+    height: 700px;
+  }
 `
 
 const SectionHeading = styled.h3`
