@@ -1,12 +1,7 @@
-import React from "react"
-
+import React, { Component } from "react"
 import styled from "styled-components"
-import TinySlider from "tiny-slider-react"
 
 import { device } from "./../devices"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 const settings = {
   lazyload: false,
@@ -146,34 +141,62 @@ const clients = [
   },
 ]
 
-export const Testimonials = () => {
-  return (
-    <TestimonialsSection>
-      <Stripes>
-        <Stripe />
-        <Stripe />
-        <Stripe />
-      </Stripes>
+export class Testimonials extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      TinySlider: null,
+    }
+    this.ts = React.createRef()
+  }
 
-      <TestimonialsContainer>
-        <SectionHeader>What Our Clients Are Saying</SectionHeader>
+  componentDidMount() {
+    import("tiny-slider-react").then(TinySlider => {
+      this.setState({ TinySlider: TinySlider.default })
+    })
+  }
 
-        <TinySlider settings={settings} cl>
-          {clients.map((el, index) => (
-            <div key={index} style={{ position: "relative" }}>
-              <SliderItem>
-                <SectionSubheader>"{el.message}"</SectionSubheader>
-                <ClientPhoto
-                  src="https://via.placeholder.com/200"
-                  alt="Client"
-                />
-                <ClientName>{el.name}</ClientName>
-                <ClientDetails>{el.title}</ClientDetails>
-              </SliderItem>
-            </div>
-          ))}
-        </TinySlider>
-      </TestimonialsContainer>
-    </TestimonialsSection>
-  )
+  render() {
+    let { TinySlider } = this.state
+
+    const renderSlider = props => {
+      if (!TinySlider) {
+        return <div>Loading...</div>
+      } else {
+        return (
+          <TinySlider settings={settings} cl>
+            {clients.map((el, index) => (
+              <div key={index} style={{ position: "relative" }}>
+                <SliderItem>
+                  <SectionSubheader>"{el.message}"</SectionSubheader>
+                  <ClientPhoto
+                    src="https://via.placeholder.com/200"
+                    alt="Client"
+                  />
+                  <ClientName>{el.name}</ClientName>
+                  <ClientDetails>{el.title}</ClientDetails>
+                </SliderItem>
+              </div>
+            ))}
+          </TinySlider>
+        )
+      }
+    }
+
+    return (
+      <TestimonialsSection>
+        <Stripes>
+          <Stripe />
+          <Stripe />
+          <Stripe />
+        </Stripes>
+
+        <TestimonialsContainer>
+          <SectionHeader>What Our Clients Are Saying</SectionHeader>
+
+          {renderSlider()}
+        </TestimonialsContainer>
+      </TestimonialsSection>
+    )
+  }
 }

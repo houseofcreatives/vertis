@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 import { device } from "./../devices"
 import { SecondaryButtonOutline, SecondaryButton } from "./buttons"
-import TinySlider from "tiny-slider-react"
 
 const Container = styled.div`
   margin-top: 100px;
@@ -88,13 +87,21 @@ export class OurServices extends Component {
     super(props)
     this.state = {
       activeService: 1,
+      TinySlider: null,
     }
     this.ts = React.createRef()
+  }
+
+  componentDidMount() {
+    import("tiny-slider-react").then(TinySlider => {
+      this.setState({ TinySlider: TinySlider.default })
+    })
   }
 
   onGoTo = dir => this.ts.slider.goTo(dir)
 
   render() {
+    let { TinySlider } = this.state
     const services = [
       {
         id: 1,
@@ -133,6 +140,42 @@ export class OurServices extends Component {
       },
     ]
 
+    const renderSlider = props => {
+      if (!TinySlider) {
+        return <div>Loading...</div>
+      } else {
+        return (
+          <TinySlider
+            settings={settings}
+            ref={ts => (this.ts = ts)}
+            onIndexChanged={e => this.setState({ activeService: e.index })}
+          >
+            {services.map((el, index) => (
+              <div key={index}>
+                <ServiceContainer>
+                  <IllustrationContainer>
+                    <Illustration src={el.illustration} />
+                  </IllustrationContainer>
+                  <ServiceInfoContainer>
+                    <ServiceTitle>{el.name}</ServiceTitle>
+                    <ServiceDescription>{el.description}</ServiceDescription>
+                    <SecondaryButton
+                      style={{
+                        padding: "1rem 4rem",
+                        height: "auto",
+                      }}
+                    >
+                      Learn More
+                    </SecondaryButton>
+                  </ServiceInfoContainer>
+                </ServiceContainer>
+              </div>
+            ))}
+          </TinySlider>
+        )
+      }
+    }
+
     return (
       <Container>
         <h3 id="services">Our Services</h3>
@@ -158,33 +201,7 @@ export class OurServices extends Component {
             )
           })}
         </ServiceButtons>
-        <TinySlider
-          settings={settings}
-          ref={ts => (this.ts = ts)}
-          onIndexChanged={e => this.setState({ activeService: e.index })}
-        >
-          {services.map((el, index) => (
-            <div key={index}>
-              <ServiceContainer>
-                <IllustrationContainer>
-                  <Illustration src={el.illustration} />
-                </IllustrationContainer>
-                <ServiceInfoContainer>
-                  <ServiceTitle>{el.name}</ServiceTitle>
-                  <ServiceDescription>{el.description}</ServiceDescription>
-                  <SecondaryButton
-                    style={{
-                      padding: "1rem 4rem",
-                      height: "auto",
-                    }}
-                  >
-                    Learn More
-                  </SecondaryButton>
-                </ServiceInfoContainer>
-              </ServiceContainer>
-            </div>
-          ))}
-        </TinySlider>
+        {renderSlider()}
       </Container>
     )
   }

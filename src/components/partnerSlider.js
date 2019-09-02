@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-
-import TinySlider from "tiny-slider-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faChevronLeft,
@@ -60,12 +58,51 @@ const settings = {
 export class PartnerSlider extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      TinySlider: null,
+    }
     this.ts = React.createRef()
+  }
+
+  componentDidMount() {
+    import("tiny-slider-react").then(TinySlider => {
+      this.setState({ TinySlider: TinySlider.default })
+    })
   }
 
   onGoTo = dir => this.ts.slider.goTo(dir)
 
   render() {
+    let { TinySlider } = this.state
+
+    const renderSlider = props => {
+      if (!TinySlider) {
+        return <div>Loading...</div>
+      } else {
+        return (
+          <TinySlider settings={settings} ref={ts => (this.ts = ts)}>
+            {partners.map((el, index) => (
+              <div key={index} style={{ position: "relative" }}>
+                <SliderItem>
+                  <a
+                    href={el.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      className={`tns-lazy-img`}
+                      src={el.imgURL}
+                      alt={el.alt}
+                    />
+                  </a>
+                </SliderItem>
+              </div>
+            ))}
+          </TinySlider>
+        )
+      }
+    }
+
     const partners = [
       {
         imgURL: require("./../images/vmware-logo.png"),
@@ -146,27 +183,7 @@ export class PartnerSlider extends Component {
             icon={faChevronLeft}
           ></SliderControl>
         </ControlContainer>
-        <div>
-          <TinySlider settings={settings} ref={ts => (this.ts = ts)}>
-            {partners.map((el, index) => (
-              <div key={index} style={{ position: "relative" }}>
-                <SliderItem>
-                  <a
-                    href={el.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className={`tns-lazy-img`}
-                      src={el.imgURL}
-                      alt={el.alt}
-                    />
-                  </a>
-                </SliderItem>
-              </div>
-            ))}
-          </TinySlider>
-        </div>
+        <div>{renderSlider()}</div>
         <ControlContainer>
           <SliderControl
             onClick={() => this.onGoTo("next")}
